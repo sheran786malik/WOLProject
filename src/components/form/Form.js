@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 
 import FormUserDetails from './formUserDetails/FormUserDetails';
 import FormPersonalDetails from './formPersonalDetails/FormPersonalDetails';
+import FormHealth from './formHealth/FormHealth';
+import FormFinances from './formFinances/FormFinances'
 import Results from './results/Results'
+
+
+
 import './Form.module.css';
 
 import HorizontalLabelPositionBelowStepper from '../questionnaireContainer/QuestionnaireContainer';
@@ -12,10 +17,13 @@ export class Form extends Component {
         step: 1,
         firstName: '',
         lastName: '',
-        emai: '',
+        email: '',
         occupation: '',
         city: '',
         bio: '',
+        exercise: '',
+        health: '',
+        finance: 0,
     }
 
     //proceed to next step
@@ -45,15 +53,15 @@ export class Form extends Component {
 
         const {step} = this.state;
         const {firstName, lastName, email, occupation, city,
-        bio} = this.state;
+        bio, exercise} = this.state;
 
         const values = { firstName, lastName, email, occupation, city,
-            bio}
+            bio, exercise}
             
             switch(step) {
                 case 1:
                 return (
-                    <div className="container" style={{backgroundColor: '#f7f7f7'}}> 
+                    <div className="container" style={{backgroundColor: '#f7f7f7', marginLeft: 550, width:  700,height: 500,marginTop: 170}}> 
                        
                     <FormUserDetails
 
@@ -67,7 +75,8 @@ export class Form extends Component {
 
                 case 2: 
                 return (
-                    <div className="container" style={{backgroundColor: '#f7f7f7'}}> 
+                    <div className="container" style={{backgroundColor: '#f7f7f7', marginLeft: 550, width:  700,height: 500,marginTop: 170}}> 
+                     
                         <FormPersonalDetails
                             nextStep={this.nextStep}
                             prevStep={this.prevStep}
@@ -77,11 +86,35 @@ export class Form extends Component {
                     </div>
                    
                 );
-
                 case 3: 
                 return (
-                    <div className="container" style={{backgroundColor: '#f7f7f7'}}> 
-
+                    <div className="container" style={{backgroundColor: '#f7f7f7', marginLeft: 550, width:  700,height: 500,marginTop: 170}}> 
+                     
+                        <FormHealth
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                            />
+                    </div>
+                );
+                case 4: 
+                return (
+                    <div className="container" style={{backgroundColor: '#f7f7f7', marginLeft: 550, width:  700,height: 500,marginTop: 170}}> 
+                     
+                        <FormFinances
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                            />
+                    </div>
+                   
+                );
+                case 5: 
+                return (
+                    <div className="container" style={{overflowX : 'auto',backgroundColor: '#f7f7f7', marginLeft: 550, width:  700,height: 500,marginTop: 170}}> 
+                     
                         <Results
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}

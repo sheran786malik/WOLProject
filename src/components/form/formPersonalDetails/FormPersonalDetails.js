@@ -23,9 +23,9 @@ export class FormPersonalDetails extends Component {
         
         return (
             <MuiThemeProvider>
-                <React.Fragment style={{width: 800, marginTop: 300}}>
-                    <AppBar title="Health"/>
-                    <div style={{textAlign: 'center'}}>
+                <React.Fragment>
+                    <AppBar title="User Info"/>
+                    <div style={{textAlign: 'center', marginTop: 50}}>
                     <TextField 
                     hintText="Enter your Occupation"
                     floatingLabelText="Occupation"

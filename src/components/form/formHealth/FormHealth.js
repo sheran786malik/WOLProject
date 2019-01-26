@@ -4,43 +4,47 @@ import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export class FormUserDetails extends Component {
+export class FormHealth extends Component {
 
     continue = e => {
         e.preventDefault();
 
         this.props.nextStep();
     }
+    back = e => {
+        e.preventDefault();
+        this.props.prevStep();
+    };
+
     render() {
-    const {values, handleChange} = this.props;
+        const {values, handleChange} = this.props;
         
         return (
             
                  <MuiThemeProvider>
                 <React.Fragment>
-                    <AppBar title="User Info"/>
+                    <AppBar title="Health"/>
                     <div style={{textAlign: 'center', marginTop: 50}}>
                         <TextField 
-                        hintText="Enter your First Name"
-                        floatingLabelText="First Name"
-                        onChange={handleChange('firstName')}
-                        defaultValue={values.firstName}
+                        hintText="Yes or No"
+                        floatingLabelText="Do you exercise?"
+                        onChange={handleChange('exercise')}
+                        defaultValue={values.exercise}
+                        
                         required
                         />
                         <br/>
                         <TextField 
-                        hintText="Enter your Last Name"
-                        floatingLabelText="Last Name"
-                        onChange={handleChange('lastName')}
-                        defaultValue={values.lastName}
+                        hintText="Daily... Weekly... Monthly"
+                        floatingLabelText="How often do you exercise?"
+                     
                         required
                         />
                         <br/>
                         <TextField 
-                        hintText="Enter your Email"
-                        floatingLabelText="Email"
-                        onChange={handleChange('email')}
-                        defaultValue={values.email}
+                        hintText="Type mental health problems"
+                        floatingLabelText="Mental Health?"
+                       
                         required
                         />
                         <br/>
@@ -49,6 +53,12 @@ export class FormUserDetails extends Component {
                         primary = {true}
                         style={styles.button}
                         onClick={this.continue}
+                        />
+                         <RaisedButton 
+                        label = "Back"
+                        primary = {false}
+                        style={styles.button}
+                        onClick={this.back}
                         />
                     </div>
                    
@@ -66,4 +76,4 @@ const styles = {
         margin: 15
     }
 }
-export default FormUserDetails;
+export default FormHealth;

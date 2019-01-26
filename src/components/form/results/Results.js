@@ -19,7 +19,8 @@ export class Results extends Component {
     }
     render() {
     const { values: {firstName, lastName, email, occupation,
-        city, bio} } = this.props;
+        city, bio, exercise, finance} } = this.props;
+    
         
         return (
             <MuiThemeProvider>
@@ -50,22 +51,30 @@ export class Results extends Component {
                         primaryText="Bio"
                         secondaryText={bio}
                         />
+                        <ListItem
+                        primaryText="Exercise"
+                        secondaryText={exercise}
+                        />
+                        <ListItem
+                        primaryText="Finances"
+                        secondaryText={finance}
+                        />
+                        <RaisedButton 
+                        label = "Confirm and Continue"
+                        primary = {true}
+                        style={styles.button}
+                        onClick={this.continue}
+                        />
+                        <RaisedButton 
+                        label = "Back"
+                        primary = {false}
+                        style={styles.button}
+                        onClick={this.back}
+                        />  
 
                     </List>
                     
-                    <RaisedButton 
-                    label = "Confirm and Continue"
-                    primary = {true}
-                    style={styles.button}
-                    onClick={this.continue}
-                    />
-
-                    <RaisedButton 
-                    label = "Back"
-                    primary = {false}
-                    style={styles.button}
-                    onClick={this.back}
-                    />      
+                        
                 </React.Fragment>
             </MuiThemeProvider>
             
